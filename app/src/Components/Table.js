@@ -4,6 +4,7 @@ import './Table.css';
 const Table = ({ runners }) => {
     return (
         <table>
+            <tbody>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -11,13 +12,14 @@ const Table = ({ runners }) => {
             {
                 runners.map((runner, i) => {
                     return (
-                        <tr>
+                        <tr key={i}>
                             <td>{runner.givenName}</td>
                             <td>{runner.familyName}</td>
                         </tr>
                     )
                 })
             }
+            </tbody>
         </table>
     )
 }
