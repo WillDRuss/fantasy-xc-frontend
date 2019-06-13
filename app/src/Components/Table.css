@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    width: 50%;
+    font-size: 2rem;
+}
+
+th {
+    color: white;
+    background-color: dodgerblue;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
