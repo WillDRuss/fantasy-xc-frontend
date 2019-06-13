@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Table from './Components/Table';
 import './App.css';
 const url = 'http://localhost:3001/runners'
-// const url = 'https://surreyleague.org/match/95/json/'
 
 class App extends Component {
     constructor() {
@@ -13,21 +12,24 @@ class App extends Component {
     }
 
     componentDidMount() {
+
         fetch(url)
-            .then(response => {
-                console.log(response)
-                return response.json()
-            })
-            .then(result => {
-                console.log(result)
-                return this.setState({ 
-                    runners: result.runners
-                })
-            })
+        .then(response => response.json())
+        .then(result => this.setState({ runners: result.runners }))    
+        .catch(err => this.setState({runners: 'error' }))   
     }
 
     render() {
-        if (this.state.runners.length === 0) {
+        if (this.state.runners === 'error') {
+            return (
+                <div className="App">
+                    <header className="App-header">
+                        <h1>Error loading data. Please try again later.</h1>        
+                    </header>
+                </div>
+            )
+        }
+        else if (this.state.runners.length === 0) {
             return (
                 <div className="App">
                     <header className="App-header">
